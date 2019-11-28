@@ -1,3 +1,28 @@
-.list-group-item {
-  line-height: 2.5;
+/* 
+#660000 - Red
+#555555 - Grey
+#fff - White
+#000 - Black
+*/
+
+body {
+  background-color: #000;
+}
+
+.header-div {
+  background-color: #660000;
+  color: #000;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.body-container-main {
+  flex-direction: column;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  margin: 0px;
+  padding: 20px;
+  border-top: #555 solid 15px;
 }
