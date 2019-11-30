@@ -9,6 +9,15 @@ body {
   background-color: #000;
 }
 
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 96%;
+  background-color: #555;
+  height: 1px;
+}
+
 .header-div {
   background-color: #660000;
   color: #000;
@@ -25,4 +34,17 @@ body {
   margin: 0px;
   padding: 20px;
   border-top: #555 solid 15px;
+}
+
+.detail-cols {
+  margin-top: 20px;
+  padding: 5px;
+}
+
+.details-text {
+  font-size: 20px;
+}
+
+.review-row {
+  width: 100%;
 }
