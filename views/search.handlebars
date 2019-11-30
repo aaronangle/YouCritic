@@ -1,0 +1,13 @@
+
+      <br>
+      <h2>Search Results</h2>
+      <center>
+        {{#each movie}}
+        <div class="carousel-tile" data-id="{{this.id}}" id="movie-{{this.id}}">
+            <img src="{{image-url}}" alt="movie image" class="carousel-image">
+          <div>{{title}}<br>
+            {{release-date}}
+          </div>
+        </div>
+        {{/each}}
+      </center>
