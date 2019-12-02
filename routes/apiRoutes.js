@@ -29,6 +29,7 @@ router.get("/", async function (req, res) {
       .then(family => {
         obj.family = family.data;
       });
+    console.log(obj.trending)
     await res.render("index", { obj })
   }
   catch{
@@ -49,7 +50,7 @@ router.get("/movie/search/:name", function (req, res) {
       } else if (numResults === 1) {
         getMovieId(results.data.results[0].id)
       } else {
-        res.render("NotFound")
+        res.render("404")
       }
     })
     .catch(err => {
@@ -71,7 +72,7 @@ function getMovieId(MovieID) {
           console.log(movieReview)
         })
       // console.log(results.data)
-      res.render("IndividualMoviePage", results.data)
+      res.render("detail", results.data)
     })
     .catch(err => {
       throw err
