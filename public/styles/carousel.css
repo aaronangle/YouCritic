@@ -27,22 +27,14 @@
 }
 
 .carousel-image {
-  max-height: 150px;
-  max-width: 250px;
+  max-height: 300px;
+  max-width: 300px;
 }
 
-.carousel-row-container {
-  height: 250px;
+.carousel-row-box {
+  height: 400px;
   overflow-x: hidden;
   overflow-y: hidden;
-  border-right: 1px solid white;
-}
-
-#carousel-row-container {
-  height: 250px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  border-right: 1px solid white;
 }
 
 /* Carousel Container */
@@ -50,10 +42,10 @@
 .carousel {
   left: 0px;
   margin: 0;
-  box-sizing: border-box;
-  width: 95%;
-  /* overflow-x: visible;
-  overflow-y: hidden; */
+  /* box-sizing: border-box;
+  width: 95%; */
+  overflow-x: visible;
+  overflow-y: visible;
 }
 
 /* Carousel Row */
