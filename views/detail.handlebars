@@ -1,0 +1,117 @@
+
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-3 detail-cols">
+            <img src="{{image}}" height="400px">
+          </div>
+          <div class="col detail-cols">
+            <p class="details-text"><b>Title:</b> {{title}}</p>
+            <p class="details-text"><b>Run Time:</b> {{run_time}}</p>
+            <p class="details-text"><b>Release Date:</b> {{release_date}}</p>
+            <p class="details-text"><b>Production company:</b> {{production.name}}</p>
+            <p class="details-text"><b>Rating:</b> {{rating}}</p>
+            <p class="details-text"><a href="#reviews"><b>(Reviews)</b></a></p>
+            <h2>Description:</h2>
+            <p>
+              {{description}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <hr>
+          </div>
+        </div>
+        {{#if video}}
+        <div class="row">
+          <div class="col detail-cols" align="center">
+            <iframe width="560" height="315" src="{{youtube_url}}" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <hr>
+          </div>
+        </div>
+        {{/if}}
+        {{#if related}}
+        <div class="row">
+          <div class="col">
+            <br>
+            <h2>Related Movies</h2>
+            <center>
+              <div class="carousel">
+                <div class="carousel-row-container">
+                  <div class="carousel-row">
+                    {{#each movie}}
+                    <div class="carousel-tile">
+                      <img src="{{image_url}}"
+                        alt="header image" class="carousel-image">
+                      <div>{{title}}<br>
+                        {{release_date}}
+                      </div>
+                    </div>
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+            </center>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <hr>
+          </div>
+        </div>
+        {{/if}}
+        {{#if reviews}}
+        <div id="reviews" class="row justify-content-center">
+          <div class="col-12">
+            <h2>Reviews:</h2>
+            <div class="row review-row">
+              <div class="col-8 offset-1">
+                {{name}}
+              </div>
+              <div class="col-2">
+                Ratint: {{rating}}
+              </div>
+            </div>
+            <div class="row review-row">
+              <div class="col-10 offset-1">
+                Review Text
+              </div>
+            </div>
+            <div class="row review-row">
+              <div class="col-10 offset-1">
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+        <div class="row">
+          <div class="col">
+            <form name="review-form">
+              <input type="text" id="reviewer-name">
+              <select id="rating">
+                  <option value = "1">1</option>
+                  <option value = "1.5">1.5</option>
+                  <option value = "2">2</option>
+                  <option value = "2.5">2.5</option>
+                  <option value = "3">3</option>
+                  <option value = "3.5">3.5</option>
+                  <option value = "4">4</option>
+                  <option value = "4.5">4.5</option>
+                  <option value = "5">5</option>
+                  <option value = "5.5">5.5</option>
+                </select>
+              <textarea id="review-text"></textarea>
+              <button type="submit" value="Submit">Submit Review</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
