@@ -29,26 +29,33 @@ router.get("/", async function (req, res) {
       .then(family => {
         obj.family = family.data;
       });
-    console.log(obj.trending)
+    console.log(obj)
     await res.render("index", { obj })
   }
   catch{
-    if (err) {
-      res.status(500)
-    }
+    res.status(500)
   }
 });
 
-// Create a new example
 router.get("/movie/search/:name", function (req, res) {
+  console.log("htin")
   const name = req.params.name;
   axios.get(`${URL}search/movie/?${key}&query=${name}`)
     .then(results => {
       const numResults = results.data.total_results
       if (numResults > 1) {
-        res.render("search", results.data)
+        const movie = results.data.results
+        console.log(results.data.results)
+        res.render("search", { movie })
       } else if (numResults === 1) {
-        getMovieId(results.data.results[0].id)
+        // getMovieId(results.data.results[0].id)
+        axios.get("/movie/getby/" + results.data.results[0].id)
+          .then(data => {
+            console.log(data)
+          })
+          .catch(err => {
+            throw err
+          })
       } else {
         res.render("404")
       }
@@ -58,29 +65,53 @@ router.get("/movie/search/:name", function (req, res) {
     })
 });
 
-function getMovieId(MovieID) {
-  axios.get(`${URL}movie/${MovieID}?${key}`)
-    .then(results => {
-      db.Review.findAll({
-
-      }, {
-        where: {
-          id: MovieID
-        }
-      })
-        .then(movieReview => {
-          console.log(movieReview)
+router.get("/movie/getby/:id", async function (req, res) {
+  const movie = {};
+  try {
+    await axios.get(`${URL}movie/${req.params.id}?${key}`)
+      .then(results => {
+        db.Review.findAll({
+          where: {
+            movieID: parseInt(req.params.id)
+          }
         })
-      // console.log(results.data)
-      res.render("detail", results.data)
-    })
-    .catch(err => {
-      throw err
-    })
-}
-
-router.get("/movie/getby/:id", function (req, res) {
-  getMovieId(req.params.id);
+          .then(movieReview => {
+            console.log(movieReview)
+            movie.rating = "Not Rated Yet"
+            let rating = 0;
+            let count = 0;
+            movieReview.forEach(element => {
+              count++;
+              rating += element.Rating
+              movie.review += element.Review
+            })
+            movie.rating = rating / count
+              .toFixed(2);
+            if (!movie.rating) {
+              movie.rating = "Be The First One To Leave A YouCritic Rating"
+            }
+            // console.log(movie.review)
+          })
+        movie.results = results.data
+        movie.review = movieReview
+      })
+    await axios.get(`${URL}movie/${req.params.id}/videos?${key}`)
+      .then(video => {
+        video.data.results.forEach(element => {
+          if (element.type === "Trailer" && element.site === "YouTube") {
+            movie.video = element;
+          }
+        })
+      })
+    await axios.get(`${URL}movie/${req.params.id}/recommendations?${key}`)
+      .then(recommendations => {
+        movie.recommend = recommendations.data;
+      })
+    await res.render("detail", { movie });
+  }
+  catch{
+    res.status(500);
+  }
 })
 
 // Delete an example by id

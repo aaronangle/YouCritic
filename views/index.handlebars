@@ -1,20 +1,21 @@
-      {{#each topic}}
-      <br>
-      <h2>Trending Movies</h2>
-      <center>
-        <div class="carousel">
-          <div class="carousel-row-container">
-            <div class="carousel-row">
-              {{#each movie}}
-              <div class="carousel-tile" data-id="{{this.id}}" id="movie-{{this.id}}">
-                  <img src="{{image-url}}" alt="movie image" class="carousel-image">
-                <div>{{title}}<br>
-                  {{release-date}}
-                </div>
-              </div>
-              {{/each}}
-            </div>
+{{#each obj}}
+<br>
+<h2>{{#if trending}}trending{{/if}}</h2>
+
+<center>
+  <div class="carousel">
+    <div class="carousel-row-container">
+      <div class="carousel-row">
+        {{#each results}}
+        <div class="carousel-tile" data-id="{{id}}" id="movie-{{id}}">
+          <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="movie image" class="carousel-image">
+          <div>{{title}}<br>
+            {{release_date}}
           </div>
         </div>
-      </center>
-      {{/each}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</center>
+{{/each}}
