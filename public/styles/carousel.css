@@ -32,18 +32,28 @@
 }
 
 .carousel-row-container {
-  height: 235px;
-  overflow: hidden;
+  height: 250px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-right: 1px solid white;
+}
+
+#carousel-row-container {
+  height: 250px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-right: 1px solid white;
 }
 
 /* Carousel Container */
 
 .carousel {
+  left: 0px;
   margin: 0;
   box-sizing: border-box;
   width: 95%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  /* overflow-x: visible;
+  overflow-y: hidden; */
 }
 
 /* Carousel Row */
