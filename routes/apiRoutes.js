@@ -13,7 +13,6 @@ setInterval(() => {
 
 router.get("/", async function (req, res) {
   if (visited) {
-    console.log(obj)
     res.render("index", { obj })
   } else {
     try {
@@ -56,9 +55,9 @@ router.get("/movie/search/:name", function (req, res) {
 
       if (numResults > 1) {
         const movie = results.data.results;
-    
-         res.render("search",  {movie} )
-      
+
+        res.render("search", { movie })
+
       } else if (numResults === 1) {
         const id = results.data.results[0].id;
         const movie = {};
@@ -81,9 +80,10 @@ router.get("/movie/search/:name", function (req, res) {
                 })
                 movie.review = { reviews }
                 movie.rating = rating / count
-                movie.rating = movie.rating.toFixed(2);
                 if (!movie.rating) {
                   movie.rating = "Be The First One To Leave A YouCritic Rating"
+                } else {
+                  movie.rating = movie.rating.toFixed(2) + " / 5";
                 }
               })
               .catch(err => {
@@ -144,9 +144,10 @@ router.get("/movie/getby/:id", async function (req, res) {
             })
             movie.review = { reviews }
             movie.rating = rating / count
-            movie.rating = movie.rating.toFixed(2);
             if (!movie.rating) {
               movie.rating = "Be The First One To Leave A YouCritic Rating"
+            } else {
+              movie.rating = movie.rating.toFixed(2) + " / 5";
             }
           })
         movie.results = results.data
