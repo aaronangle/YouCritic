@@ -1,12 +1,16 @@
 <br>
 <h2>Search Results</h2>
-<center>
+<div class="row">
+<div class="col-10 offset-1 search-results-container">
   {{#each movie}}
-  <div class="carousel-tile" data-id="{{id}}" id="movie-{{id}}">
+  <div class="carousel-tile-no-animate" data-id="{{id}}" id="movie-{{id}}">
+    <div class="search-image">
     <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="movie image" class="carousel-image">
+    </div>
     <div>{{title}}<br>
       {{niceDate release_date}}
     </div>
   </div>
   {{/each}}
-</center>
+</div>
+</div>
