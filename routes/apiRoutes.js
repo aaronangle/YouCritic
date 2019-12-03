@@ -70,21 +70,24 @@ router.get("/movie/search/:name", function (req, res) {
               }
             })
               .then(movieReview => {
+                const reviews = []
                 movie.rating = "Not Rated Yet"
                 let rating = 0;
                 let count = 0;
                 movieReview.forEach(element => {
                   count++;
-                  rating += element.Rating
-                  movie.review += element.Review
+                  rating += parseInt(element.Rating)
+                  reviews.push({ desc: element.Review, rating: element.Rating, name: element.name })
                 })
+                movie.review = { reviews }
                 movie.rating = rating / count
-                  .toFixed(2);
+                movie.rating = movie.rating.toFixed(2);
                 if (!movie.rating) {
                   movie.rating = "Be The First One To Leave A YouCritic Rating"
                 }
-
-                movie.review = movieReview
+              })
+              .catch(err => {
+                console.log(err)
               })
             movie.results = results.data
           })
@@ -115,10 +118,9 @@ router.get("/movie/search/:name", function (req, res) {
       }
     })
     .catch(err => {
-      throw err
-    })
+      console.log(err)
+    });
 });
-
 
 router.get("/movie/getby/:id", async function (req, res) {
   const movie = {};
@@ -137,12 +139,12 @@ router.get("/movie/getby/:id", async function (req, res) {
             let count = 0;
             movieReview.forEach(element => {
               count++;
-              rating += element.Rating
-              reviews.push({ desc: element.Review, rating: element.Rating })
+              rating += parseInt(element.Rating)
+              reviews.push({ desc: element.Review, rating: element.Rating, name: element.name })
             })
             movie.review = { reviews }
             movie.rating = rating / count
-              .toFixed(2);
+            movie.rating = movie.rating.toFixed(2);
             if (!movie.rating) {
               movie.rating = "Be The First One To Leave A YouCritic Rating"
             }
@@ -161,7 +163,6 @@ router.get("/movie/getby/:id", async function (req, res) {
       .then(recommendations => {
         movie.recommend = recommendations.data;
       })
-    console.log(movie.review)
     await res.render("detail", { movie });
   }
   catch{
@@ -172,8 +173,10 @@ router.get("/movie/getby/:id", async function (req, res) {
 router.post("/movie/review/:id", function (req, res) {
   const rating = req.body.rating
   const review = req.body.review;
+  const name = req.body.name;
   console.log(rating)
   db.Review.create({
+    name: name,
     movieID: req.params.id,
     Rating: rating,
     Review: review
