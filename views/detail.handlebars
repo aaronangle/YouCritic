@@ -47,8 +47,8 @@
           <div class="carousel-row-container">
             <div class="carousel-row">
               {{#each movie.recommend.results}}
-              <div class="carousel-tile" data-id="{{id}}">
-                <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" class="carousel-image">
+              <div class="carousel-tile" >
+                <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}" class="carousel-image">
                 <div>{{title}}<br>
                   {{niceDate release_date}}
                 </div>
