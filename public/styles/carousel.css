@@ -32,7 +32,7 @@
 }
 
 .carousel-row-box {
-  height: 415px;
+  height: 425px;
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -51,12 +51,15 @@
 /* Carousel Row */
 
 .carousel-row {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   margin-top: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 2);
   margin-bottom: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 2);
   margin-left: calc((var(--carousel-tile-width) * (var(--carousel-growth-factor) - 1)) / 2);
   margin-right: calc((var(--carousel-tile-width) * (var(--carousel-growth-factor) - 1)) / 2);
   transition: var(--carousel-transition-2);
+  display: flex;
+  align-items: top;
+  vertical-align: middle;
 }
 
 .carousel-row-search {
@@ -81,6 +84,21 @@
   transform-origin: center left;
   cursor: pointer;
   cursor: hand;
+}
+
+.carousel-tile-no-animate {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  /* width: var(--carousel-tile-width); */
+  height: var(--carousel-tile-height);
+  margin-right: var(--carousel-tile-spacing);
+  /* transition: var(--carousel-transition-2);
+  -webkit-transform-origin: center left;
+  transform-origin: center left; */
+  cursor: pointer;
+  cursor: hand;
+  height: 400px;
 }
 
 /* Add Extra Margin to Last Carousel Tile */

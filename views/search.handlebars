@@ -1,13 +1,17 @@
 <br>
 <h2>Search Results</h2>
-<center>
-  {{#each movie}}
-  <div class="carousel-tile" id="movie-{{id}}">
-    <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="movie image" class="carousel-image"
-      data-id="{{id}}">
-    <div>{{title}}<br>
-      {{niceDate release_date}}
+<div class="row">
+  <div class="col-10 offset-1 search-results-container">
+    {{#each movie}}
+    <div class="carousel-tile-no-animate" id="movie-{{id}}">
+      <div class="search-image">
+        <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="movie image" data-id="{{id}}"
+          class="carousel-image">
+      </div>
+      <div>{{title}}<br>
+        {{niceDate release_date}}
+      </div>
     </div>
+    {{/each}}
   </div>
-  {{/each}}
-</center>
+</div>
