@@ -4,57 +4,106 @@ const key = "api_key=5b7ec8c43b8a517b567bff8676f13124";
 const URL = "https://api.themoviedb.org/3/";
 const express = require("express")
 const router = express.Router();
+const obj = {};
+let visited;
 
-// Get all examples
+setInterval(() => {
+  visited = false;
+}, 43200000);
+
 router.get("/", async function (req, res) {
-  const obj = {}
-  try {
-    await axios.get(`${URL}trending/movie/day?${key}`)
-      .then(trending => {
-        obj.trending = trending.data;
-      });
-    await axios.get(`${URL}movie/now_playing?${key}`)
-      .then(latest => {
-        obj.latest = latest.data;
-      });
-    await axios.get(`${URL}discover/movie?${key}&with_genres=28`)
-      .then(action => {
-        obj.action = action.data;
-      });
-    await axios.get(`${URL}discover/movie?${key}&with_genres=35`)
-      .then(comedy => {
-        obj.comedy = comedy.data;
-      });
-    await axios.get(`${URL}discover/movie?${key}&with_genres=10751`)
-      .then(family => {
-        obj.family = family.data;
-      });
+  if (visited) {
     console.log(obj)
-    await res.render("index", { obj })
-  }
-  catch{
-    res.status(500)
+    res.render("index", { obj })
+  } else {
+    try {
+      await axios.get(`${URL}trending/movie/day?${key}`)
+        .then(trending => {
+          obj.Trending = trending.data;
+        });
+      await axios.get(`${URL}movie/now_playing?${key}`)
+        .then(latest => {
+          obj.Latest = latest.data;
+        });
+      await axios.get(`${URL}discover/movie?${key}&with_genres=28`)
+        .then(action => {
+          obj.Action = action.data;
+        });
+      await axios.get(`${URL}discover/movie?${key}&with_genres=35`)
+        .then(comedy => {
+          obj.Comedy = comedy.data;
+        });
+      await axios.get(`${URL}discover/movie?${key}&with_genres=10751`)
+        .then(family => {
+          obj.Family = family.data;
+        });
+      await res.render("index", { obj })
+      visited = true;
+    }
+    catch{
+      res.status(500)
+    }
   }
 });
 
 router.get("/movie/search/:name", function (req, res) {
-  console.log("htin")
   const name = req.params.name;
   axios.get(`${URL}search/movie/?${key}&query=${name}`)
     .then(results => {
       const numResults = results.data.total_results
       if (numResults > 1) {
-        const movie = results.data.results
-        console.log(results.data.results)
+        const movie = results.data.results;
         res.render("search", { movie })
       } else if (numResults === 1) {
-        // getMovieId(results.data.results[0].id)
-        axios.get("/movie/getby/" + results.data.results[0].id)
-          .then(data => {
-            console.log(data)
+        const id = results.data.results[0].id;
+        const movie = {};
+        axios.get(`${URL}movie/${id}?${key}`)
+          .then(results => {
+            db.Review.findAll({
+              where: {
+                movieID: parseInt(id)
+              }
+            })
+              .then(movieReview => {
+                movie.rating = "Not Rated Yet"
+                let rating = 0;
+                let count = 0;
+                movieReview.forEach(element => {
+                  count++;
+                  rating += element.Rating
+                  movie.review += element.Review
+                })
+                movie.rating = rating / count
+                  .toFixed(2);
+                if (!movie.rating) {
+                  movie.rating = "Be The First One To Leave A YouCritic Rating"
+                }
+
+                movie.review = movieReview
+              })
+            movie.results = results.data
           })
           .catch(err => {
-            throw err
+            console.log(err)
+          })
+        axios.get(`${URL}movie/${id}/videos?${key}`)
+          .then(video => {
+            video.data.results.forEach(element => {
+              if (element.type === "Trailer" && element.site === "YouTube") {
+                movie.video = element;
+              }
+            })
+          })
+          .catch(err => {
+            console.log(err)
+          })
+        axios.get(`${URL}movie/${id}/recommendations?${key}`)
+          .then(recommendations => {
+            movie.recommend = recommendations.data;
+            res.render("detail", { movie });
+          })
+          .catch(err => {
+            console.log(err)
           })
       } else {
         res.render("404")
@@ -64,6 +113,7 @@ router.get("/movie/search/:name", function (req, res) {
       throw err
     })
 });
+
 
 router.get("/movie/getby/:id", async function (req, res) {
   const movie = {};
@@ -76,24 +126,23 @@ router.get("/movie/getby/:id", async function (req, res) {
           }
         })
           .then(movieReview => {
-            console.log(movieReview)
+            const reviews = []
             movie.rating = "Not Rated Yet"
             let rating = 0;
             let count = 0;
             movieReview.forEach(element => {
               count++;
               rating += element.Rating
-              movie.review += element.Review
+              reviews.push({ desc: element.Review, rating: element.Rating })
             })
+            movie.review = { reviews }
             movie.rating = rating / count
               .toFixed(2);
             if (!movie.rating) {
               movie.rating = "Be The First One To Leave A YouCritic Rating"
             }
-            // console.log(movie.review)
           })
         movie.results = results.data
-        movie.review = movieReview
       })
     await axios.get(`${URL}movie/${req.params.id}/videos?${key}`)
       .then(video => {
@@ -107,6 +156,7 @@ router.get("/movie/getby/:id", async function (req, res) {
       .then(recommendations => {
         movie.recommend = recommendations.data;
       })
+    console.log(movie.review)
     await res.render("detail", { movie });
   }
   catch{
@@ -114,7 +164,6 @@ router.get("/movie/getby/:id", async function (req, res) {
   }
 })
 
-// Delete an example by id
 router.post("/movie/review/:id", function (req, res) {
   const rating = req.body.rating
   const review = req.body.review;
