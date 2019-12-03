@@ -1,5 +1,6 @@
 $navbarSearch = $("#navbar-search");
 $movies = $(".carousel-image");
+$submit = $("button")
 
 
 
@@ -25,5 +26,24 @@ var movieClick = function () {
     window.location.assign("/movie/getby/" + id)
 };
 
+var submitReview = function () {
+    event.preventDefault();
+    if ($("#reviewer-name").val() === "" || $("#rating").val() === "" || $("#review-text").val() === "") {
+        alert("Please fill in all the information fields")
+        return;
+    }
+    var data = {
+        id: $(this).attr("data-id"),
+        name: $("#reviewer-name").val(),
+        Rating: $("#rating").val(),
+        Review: $("#review-text").val()
+    }
+    $.post("/movie/review", data)
+        .then(function (data) {
+            location.reload();
+        })
+}
+
 $navbarSearch.on("submit", handleFormSubmit);
 $movies.on("click", movieClick);
+$submit.on("click", submitReview)
