@@ -2,11 +2,11 @@
 <br>
 <h2>{{@key}} Movies</h2>
       <div class="row">
-        <div class="col-1 m-auto" id="slide-left">
-          <a class="arrow"><i class="fas fa-angle-left"></i></a>
+        <div class="col-1 m-auto slide-left">
+          <a class="arrow"><i class="fas fa-angle-left left-arrow"></i></a>
         </div>
-        <div class="col-10 carousel-row-box align-items-center" id="carousel-row-container-1">
-          <div class="carousel dragscroll" id="slide-row-1">
+        <div class="col-10 carousel-row-box align-items-center" id="{{@index}}">
+          <div class="carousel dragscroll" id="slide-row-{{@index}}">
             <div class="carousel-row">
 
               {{#each results}}
@@ -21,8 +21,8 @@
             </div>
           </div>
         </div>
-        <div class="col-1 m-auto" id="slide-right">
-          <a class="arrow"><i class="fas fa-angle-right"></i></a>
+        <div class="col-1 m-auto slide-right">
+          <a class="arrow"><i class="fas fa-angle-right right-arrow"></i></a>
         </div>
       </div>
 {{/each}}
