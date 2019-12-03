@@ -7,7 +7,7 @@
     <div class="col detail-cols">
       <p class="details-text"><b>Title:</b> {{movie.results.title}}</p>
       <p class="details-text"><b>Run Time:</b> {{movie.results.runtime}} mins</p>
-      <p class="details-text"><b>Release Date:</b> {{movie.results.release_date}}</p>
+      <p class="details-text"><b>Release Date:</b> {{niceDate movie.results.release_date}}</p>
       <p class="details-text"><b>Production Companies:</b> {{#each movie.results.production_companies}}{{name}}
         {{/each}}</p>
       <p class="details-text"><b>YouCritic Rating:</b> {{movie.rating}}</p>
@@ -50,7 +50,7 @@
               <div class="carousel-tile" data-id="{{id}}">
                 <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" class="carousel-image">
                 <div>{{title}}<br>
-                  {{release_date}}
+                  {{niceDate release_date}}
                 </div>
               </div>
               {{/each}}
@@ -66,22 +66,25 @@
     </div>
   </div>
   {{/if}}
-  {{#each movie.review}}
+  {{#if movie.review}}
   <div id="reviews" class="row justify-content-center">
     <div class="col-12">
-      <h2>Reviews:</h2>
+      <h2>Reviews:{{movie.review.results.desc}}</h2>
+      {{#each movie.review.reviews}}
       <div class="row review-row">
         <div class="col-8 offset-1">
-          {{name}}
+          <h2>{{desc}}</h2>
+
         </div>
         <div class="col-2">
           Rating: {{rating}}
         </div>
       </div>
+
       <div class="row review-row">
         <div class="col-10 offset-1">
 
-          {{Review.dataValues.Review}}
+
 
         </div>
       </div>
@@ -90,9 +93,10 @@
           <hr>
         </div>
       </div>
+      {{/each}}
     </div>
   </div>
-  {{/each}}
+  {{/if}}
   <div class="row">
     <div class="col">
       <form name="review-form">
