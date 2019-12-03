@@ -30,20 +30,24 @@ $(document).ready(function () {
     }
   });
 
-  $('.slide-left').click(function () {
-    if (animatingFlag) { return; }
-    animatingFlag = true;
-    let left = parseInt($("#slide-row-" + rowIndex).css('left'), 10);
-    if (left + 600 >= 0) {
-      $("#slide-row-" + rowIndex).animate({ left: 0 }, 400, function () {
-        FixMargin(0);
-      });
-      return;
-    };
+  $('.slide-left').click(function (evt) {
+    const rowIndex = $(this).siblings()[0].id;
 
-    $("#slide-row-" + rowIndex).animate({ left: left + 600 }, 400, function () {
-      FixMargin(left + 600);
-    });
+    if (evt.target.matches(".left-arrow")) {
+      if (animatingFlag) { return; }
+      animatingFlag = true;
+      let left = parseInt($("#slide-row-" + rowIndex).css('left'), 10);
+      if (left + 600 >= 0) {
+        $("#slide-row-" + rowIndex).animate({ left: 0 }, 400, function () {
+          FixMargin(0);
+        });
+        return;
+      };
+
+      $("#slide-row-" + rowIndex).animate({ left: left + 600 }, 400, function () {
+        FixMargin(left + 600);
+      });
+    }
   });
 
 });
