@@ -58,3 +58,15 @@ input.search-query {
 #navbar-search{
   margin: auto;
 }
+
+.search-results-container{
+  align-items: top;
+  vertical-align: middle;
+  height: 500px;
+}
+
+.search-image{
+  align-items: top;
+  vertical-align: middle;
+  height: 300px;
+}
