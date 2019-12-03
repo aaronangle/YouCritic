@@ -3,9 +3,9 @@
 <div class="row">
 <div class="col-10 offset-1 search-results-container">
   {{#each movie}}
-  <div class="carousel-tile-no-animate" data-id="{{id}}" id="movie-{{id}}">
+  <div class="carousel-tile-no-animate" id="movie-{{id}}">
     <div class="search-image">
-    <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="movie image" class="carousel-image">
+    <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="movie image" data-id="{{id}}" class="carousel-image">
     </div>
     <div>{{title}}<br>
       {{niceDate release_date}}
