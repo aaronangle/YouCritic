@@ -47,13 +47,18 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/movie/search/:name", function (req, res) {
+  console.log("route hit")
   const name = req.params.name;
+  console.log(name);
   axios.get(`${URL}search/movie/?${key}&query=${name}`)
     .then(results => {
       const numResults = results.data.total_results
+
       if (numResults > 1) {
         const movie = results.data.results;
-        res.render("search", { movie })
+    
+         res.render("search",  {movie} )
+      
       } else if (numResults === 1) {
         const id = results.data.results[0].id;
         const movie = {};
