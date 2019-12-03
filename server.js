@@ -1,6 +1,8 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var Handlebars = require("handlebars")
+var moment = require("moment")
 
 var db = require("./models");
 
@@ -12,7 +14,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// Handlebars
+Handlebars.registerHelper('niceDate', function (dateTime) {
+  return moment(dateTime).format('MMM Do YYYY');
+});
+
+Handlebars
 app.engine(
   "handlebars",
   exphbs({
