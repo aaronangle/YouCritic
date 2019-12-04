@@ -4,34 +4,10 @@ const key = "api_key=5b7ec8c43b8a517b567bff8676f13124";
 const URL = "https://api.themoviedb.org/3/";
 const express = require("express")
 const router = express.Router();
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const passport = require("passport")
-const initializePassport = require("../passport-config.js")
 const obj = {};
 let visited;
-initializePassport(passport,
-  myemail => {
-    db.User.findOne({
-      where: {
-        email: myemail
-      }
-    }).then(data => {
-      return data.dataValues.email
-    })
-  },
-  // user => user.email === email
-  // user => user.id === id
-  myid => {
-    db.User.findAll({
-      where: {
-        id: myid
-      }
-    }).then(data => {
-      console.log(data[0].dataValues.id)
-      return data[0].dataValues.id
-    })
-  }
-)
 
 setInterval(() => {
   visited = false;
@@ -196,34 +172,6 @@ router.get("/movie/getby/:id", async function (req, res) {
   }
 })
 
-router.post("/movie/review", function (req, res) {
-  const { Rating, Review, name, id } = req.body
-  db.Review.create({
-    name: name,
-    movieID: id,
-    Rating: Rating,
-    Review: Review
-  }).then(function (dbReview) {
-    console.log(dbReview.dataValues)
-    res.json(dbReview.dataValues);
-  });
-});
-
-router.put("/movie/review/:id", function (req, res) {
-  const review = req.body.review;
-  console.log(rating)
-  db.Review.update({
-    Review: review
-  }, {
-    where: {
-      movieID: req.params.id
-    }
-  }).then(function (dbReview) {
-    console.log(dbReview.dataValues)
-    res.json(dbReview.dataValues);
-  });
-});
-
 router.get("/register", (req, res) => {
   res.render("register")
 })
@@ -246,10 +194,6 @@ router.post("/register", async (req, res) => {
   }
 })
 
-router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function (req, res) {
-    res.redirect('/');
-  });
+
 
 module.exports = router;
