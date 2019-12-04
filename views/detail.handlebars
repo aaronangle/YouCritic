@@ -8,7 +8,7 @@
       <p class="details-text"><b>Title:</b> {{movie.results.title}}</p>
       {{#if movie.results.runtime}}<p class="details-text"><b>Run Time:</b> {{movie.results.runtime}} mins</p>{{/if}}
       <p class="details-text"><b>Release Date:</b> {{niceDate movie.results.release_date}}</p>
-      <p class="details-text"><b>Production Companies:</b> {{#each movie.results.production_companies}}{{name}}
+      <p class="details-text"><b>Production Companies:</b> | {{#each movie.results.production_companies}}{{name}} | 
         {{/each}}</p>
       <p class="details-text"><b>YouCritic Rating:</b> {{movie.rating}}</p>
       <p class="details-text"><a href="#reviews"><b>(Reviews)</b></a></p>
