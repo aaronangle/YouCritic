@@ -139,11 +139,12 @@ router.get("/movie/getby/:id", async function (req, res) {
             let count = 0;
             movieReview.forEach(element => {
               count++;
-              rating += parseInt(element.Rating)
+              rating += parseInt(element.Rating);
               reviews.push({ desc: element.Review, rating: element.Rating, name: element.name })
             })
             movie.review = { reviews }
             movie.rating = rating / count
+            console.log(movie.rating)
             if (!movie.rating) {
               movie.rating = "Be The First One To Leave A YouCritic Rating"
             } else {
@@ -171,16 +172,13 @@ router.get("/movie/getby/:id", async function (req, res) {
   }
 })
 
-router.post("/movie/review/:id", function (req, res) {
-  const rating = req.body.rating
-  const review = req.body.review;
-  const name = req.body.name;
-  console.log(rating)
+router.post("/movie/review", function (req, res) {
+  const { Rating, Review, name, id } = req.body
   db.Review.create({
     name: name,
-    movieID: req.params.id,
-    Rating: rating,
-    Review: review
+    movieID: id,
+    Rating: Rating,
+    Review: Review
   }).then(function (dbReview) {
     console.log(dbReview.dataValues)
     res.json(dbReview.dataValues);
