@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f01e537613.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/carousel.css">
+    <title>YouCritic</title>
+  </head>
+
+  <body>
+    <div class="header-div">
+      <div class="my-auto">
+        <img src="images/header-800.jpg" alt="header image">
+        <form class="navbar-search">
+          <input type="text" class="search-query offset1" placeholder="Search Movies Here!">
+      </form>
+      </div>
+    </div>
+    <div class="body-container-main">
+      <div class="my-auto">
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-3 detail-cols">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/61InXKhDVRL._AC_SY879_.jpg" height="400px">
+            </div>
+            <div class="col detail-cols">
+              <p class="details-text"><b>Title:</b> {{title}}</p>
+              <p class="details-text"><b>Run Time:</b> {{run_time}}</p>
+              <p class="details-text"><b>Release Date:</b> {{release_date}}</p>
+              <p class="details-text"><b>Production company:</b> {{production.name}}</p>
+              <p class="details-text"><b>Rating:</b> {{rating}}</p>
+              <p class="details-text"><a href="#reviews"><b>(Reviews)</b></a></p>
+              <h2>Description:</h2>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias incidunt sequi obcaecati iusto.
+                Architecto
+                atque sapiente quos dolorem quibusdam. Iste nam sed accusantium eveniet a quos optio nesciunt debitis
+                vero.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi nesciunt doloribus aspernatur earum,
+                a
+                architecto iusto, tempore repellendus fugit at assumenda libero, voluptatem ullam consequatur illum sit
+                officiis ducimus. Qui?
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col detail-cols" align="center">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/81jCPIag4KA" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <br>
+              <h2>Related Movies</h2>
+              <center>
+                <div class="carousel">
+                  <div class="carousel-row-container">
+                    <div class="carousel-row">
+                      <div class="carousel-tile">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/61InXKhDVRL._AC_SY879_.jpg"
+                          alt="header image" class="carousel-image">
+                        <div>text<br>
+                          text
+                        </div>
+                      </div>
+                      <div class=" carousel-tile">
+                        <img src="images/header-800.jpg" alt="header image" width="250px">
+                        <div>text</div>
+                      </div>
+                      <div class="carousel-tile">
+                        <img src="images/header-800.jpg" alt="header image" width="250px">
+                        <div>text</div>
+                      </div>
+                      <div class="carousel-tile">
+                        <img src="images/header-800.jpg" alt="header image" width="250px">
+                        <div>text</div>
+                      </div>
+                      <div class="carousel-tile">
+                        <img src="images/header-800.jpg" alt="header image" width="250px">
+                        <div>text</div>
+                      </div>
+                      <div class="carousel-tile">
+                        <img src="images/header-800.jpg" alt="header image" width="250px">
+                        <div>text</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </center>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <hr>
+            </div>
+          </div>
+          <div id="reviews" class="row justify-content-center">
+            <div class="col-12">
+              <h2>Reviews:</h2>
+              <div class="row review-row">
+                <div class="col-8 offset-1">
+                  {{name}}
+                </div>
+                <div class="col-2">
+                  Ratint: {{rating}}
+                </div>
+              </div>
+              <div class="row review-row">
+                <div class="col-10 offset-1">
+                  Review Text
+                </div>
+              </div>
+              <div class="row review-row">
+                <div class="col-10 offset-1">
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <form name="review-form">
+                <input type="text" id="reviewer-name">
+                <select id="rating">
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                  <option value="2.5">2.5</option>
+                  <option value="3">3</option>
+                  <option value="3.5">3.5</option>
+                  <option value="4">4</option>
+                  <option value="4.5">4.5</option>
+                  <option value="5">5</option>
+                  <option value="5.5">5.5</option>
+                </select>
+                <textarea id="review-text"></textarea>
+                <button type="submit" value="Submit">Submit Review</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+
+</html>
