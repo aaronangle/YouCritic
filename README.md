@@ -1,3 +1,4 @@
+![HomePage](public/images/header-800.jpg)
 # YouCritic
 
 Are you a movie critic?
@@ -9,7 +10,13 @@ We created YouCritic as a way for people to see movie trailers and be able to ra
  
 ## Screenshots
 
-Include logo/demo screenshot etc.
+![HomePage](public/images/homepageGif.gif)
+
+![Search Option](public/images/searchGif.gif)
+
+![Detail Page](public/images/detailsGif.gif)
+
+![Review](public/images/reviewGif.gif)
 
 ## Tech/framework used
 
@@ -31,24 +38,31 @@ Provide step by step series of examples and explanations about how to get a deve
 
 ## API Reference
 
-YouCritic 
+- [THE MOVIE DATABASE API](https://developers.themoviedb.org/3/getting-started/introduction)
+
+YouCritic is based around our API call to The Movie Database API. On the home page, all the different sections are being pulled by the API call referencing each different section. When you are searching for a movie, the API call will display all the movies that fit the search term. On the movie detail page, you will see related movies to the movie selected which is also an API call!  
 
 ## Tests
-Describe and show how to run the tests with code examples.
 
-## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+The type of testing we used was a canary test. A "canary" test is one we set up to always pass, this can help us ensure our testing suite is set up correctly before writing real tests.
 
-## Contribute
-
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
 
 ## Credits
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project. 
 
-#### Anything else that seems useful
+Make sure you give the YouCritic team a round of applause! 
 
-## License
-A short snippet describing the license (MIT, Apache etc)
+Aaron – Set up the database, handle the routes and spearheaded the authentication
 
-MIT © [Yourname]()
+Chris – Took care of the frontend design and functionality
+
+William – Worked on front end JS to connect the front and back together
+
+## Challenges
+
+Learning the Passport authentication and getting it to work
+
+The scrolling of the carousel and making it stop on the right side
+
+## Successes
+
+The auth was the “if we can” functionality and we were able to surpass goal and go further

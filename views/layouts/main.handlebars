@@ -21,7 +21,7 @@
         <img src="/images/header-320.jpg" alt="header image" class="header-image-small"></a>
       <form id="navbar-search" class="searchContainer" type="search" name="search" placeholder="Search Movies Here!"
         method="POST">
-        <input type="search" name = "search" placeholder="Search Movies...">
+        <input type="search" name="search" placeholder="Search Movies...">
         <div class="search"></div>
       </form>
     </div>
@@ -30,8 +30,80 @@
     <div class="my-auto">
       {{{body}}}
     </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <form action="/login" method="POST">
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+              </div>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <p>Don't have an account yet?</p>
+            <button type="button" id="register" class="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Register</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/register" method="POST">
+              <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+              </div>
+              <button type="submit" id="register-user">Register</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
   <script src="/js/slider.js"></script>
   <script src="/js/indexwilliam.js"></script>
 

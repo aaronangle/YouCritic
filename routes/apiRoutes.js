@@ -188,7 +188,6 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     })
-    await res.redirect("/login")
   } catch{
     res.redirect("/register")
   }
