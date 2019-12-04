@@ -9,9 +9,9 @@ module.exports = function (app, passport) {
     });
 
   app.post("/movie/review", isLoggedIn, (req, res) => {
-    const { Rating, Review, name, id } = req.body
+    const { Rating, Review, name, id } = req.body;
     db.Review.create({
-      name: name,
+      name: req.user.name,
       movieID: id,
       Rating: Rating,
       Review: Review
