@@ -99,13 +99,13 @@
   <form name="review-form" method="Post">
     <div class="row">
       <div class="col-8 offset-2 review-col">
+        {{#if movie.user}}
         <h2>Write a Review!</h2>
       </div>
     </div>
     <div class="row">
       <div class="col-6 offset-2 review-col">
-        <label>Reviewer's Name:</label><br>
-        <input type="text" id="reviewer-name" class="text-input" placeholder="Reviewer's name">
+        <h3>Reviewer's Name: {{movie.user}}</h3>
       </div>
       <div class="col-2 review-col">
         <label>Your Rating:</label><br>
@@ -130,10 +130,18 @@
     </div>
     <div class="row">
       <div class="col-8 offset-2 review-col">
-        <button type="submit" value="Submit" data-id={{movie.results.id}} class="btn">Submit Review</button>
+        <button type="submit" value="Submit" data-id={{movie.results.id}} class="btn" id="submitReview">Submit
+          Review</button>
       </div>
     </div>
   </form>
+  {{else}}
+  <h2>Login or Register to Leave a Review</h2>
+  <div class="col-8 offset-2 review-col">
+    <button class="btn" id="register-user">Login</button>
+    <button class="btn" id="registerUser">Register</button>
+  </div>
+  {{/if}}
 </div>
 <br>
 <br>

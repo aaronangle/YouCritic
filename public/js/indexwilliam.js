@@ -1,8 +1,9 @@
 var $navbarSearch = $("#navbar-search");
 var $movies = $(".carousel-image");
-var $submit = $(".btn");
+var $submit = $("#submitReview");
 var register = $("#register")
 var registerUser = $("#register-user")
+var registerDetail = $("#registerUser")
 
 
 
@@ -58,7 +59,13 @@ register.on("click", function () {
     $("#registerModal").modal("show")
 })
 
-registerUser.on("click", function () {
+registerDetail.on("click", function (event) {
+    event.preventDefault()
+    $("#registerModal").modal("show")
+})
+
+registerUser.on("click", function (event) {
+    event.preventDefault()
     $("#loginModal").modal("show")
 })
 

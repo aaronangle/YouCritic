@@ -61,6 +61,11 @@ router.get("/movie/search/:name", function (req, res) {
       } else if (numResults === 1) {
         const id = results.data.results[0].id;
         const movie = {};
+        if (req.user !== undefined) {
+          movie.user = req.user.name
+        } else {
+          movie.user = "Not Logged In"
+        }
         axios.get(`${URL}movie/${id}?${key}`)
           .then(results => {
             db.Review.findAll({
@@ -124,6 +129,11 @@ router.get("/movie/search/:name", function (req, res) {
 
 router.get("/movie/getby/:id", async function (req, res) {
   const movie = {};
+  if (req.user !== undefined) {
+    movie.user = req.user.name
+  } else {
+    movie.user = false;
+  }
   try {
     await axios.get(`${URL}movie/${req.params.id}?${key}`)
       .then(results => {
@@ -144,7 +154,6 @@ router.get("/movie/getby/:id", async function (req, res) {
             })
             movie.review = { reviews }
             movie.rating = rating / count
-            console.log(movie.rating)
             if (!movie.rating) {
               movie.rating = "Be The First One To Leave A YouCritic Rating"
             } else {
