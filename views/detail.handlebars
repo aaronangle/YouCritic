@@ -1,14 +1,14 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-3 detail-cols">
+    <div class="col-xs-12 col-md-4 detail-cols">
       <img src="https://image.tmdb.org/t/p/w500/{{movie.results.poster_path}}" height="400px">
     </div>
-    <div class="col detail-cols">
+    <div class="col-xs-12 col-md-8 detail-cols">
       <p class="details-text"><b>Title:</b> {{movie.results.title}}</p>
-      <p class="details-text"><b>Run Time:</b> {{movie.results.runtime}} mins</p>
+      {{#if movie.results.runtime}}<p class="details-text"><b>Run Time:</b> {{movie.results.runtime}} mins</p>{{/if}}
       <p class="details-text"><b>Release Date:</b> {{niceDate movie.results.release_date}}</p>
-      <p class="details-text"><b>Production Companies:</b> {{#each movie.results.production_companies}}{{name}}
+      <p class="details-text"><b>Production Companies:</b> | {{#each movie.results.production_companies}}{{name}} |
         {{/each}}</p>
       <p class="details-text"><b>YouCritic Rating:</b> {{movie.rating}}</p>
       <p class="details-text"><a href="#reviews"><b>(Reviews)</b></a></p>
@@ -45,17 +45,21 @@
     <div class="col-10 carousel-row-box align-items-center" id="0">
       <div class="carousel dragscroll" id="slide-row-0">
         <div class="carousel-row">
-
-          {{#each movie.recommend.results}}
-          <div class="carousel-tile">
+          <<<<<<< HEAD {{#each movie.recommend.results}} <div class="carousel-tile">
             <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}"
               class="carousel-image">
-            <div>{{title}}<br>
-              {{niceDate release_date}}
+            =======
+            {{#each movie.recommend.results}}
+            <div class="carousel-tile">
+              <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}"
+                class="carousel-image">
+              >>>>>>> b1e367f55499015e4f73f321397346f5ae693705
+              <div>{{title}}<br>
+                {{niceDate release_date}}
+              </div>
             </div>
-          </div>
-          {{/each}}
-
+            {{/each}}
+            <<<<<<< HEAD=======>>>>>>> b1e367f55499015e4f73f321397346f5ae693705
         </div>
       </div>
     </div>
@@ -77,33 +81,40 @@
       <div class="row review-row">
         <div class="col-8 offset-1">
           <h2>{{name}}</h2>
-          {{desc}}
         </div>
         <div class="col-2">
           Rating: {{rating}}
         </div>
       </div>
-
-      <div class="row review-row">
-        <div class="col-10 offset-1">
-
-
-
-        </div>
-      </div>
-      <div class="row review-row">
+      <div class="row review-row-no-pad">
         <div class="col-10 offset-1">
           <hr>
         </div>
       </div>
+      <div class="row review-row">
+        <div class="col-10 offset-1">
+          {{desc}}
+        </div>
+      </div>
+      <hr>
       {{/each}}
     </div>
   </div>
   {{/if}}
-  <div class="row">
-    <div class="col">
-      <form name="review-form">
-        <input type="text" id="reviewer-name">
+  <br>
+  <form name="review-form" method="Post">
+    <div class="row">
+      <div class="col-8 offset-2 review-col">
+        <h2>Write a Review!</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 offset-2 review-col">
+        <label>Reviewer's Name:</label><br>
+        <input type="text" id="reviewer-name" class="text-input" placeholder="Reviewer's name">
+      </div>
+      <div class="col-2 review-col">
+        <label>Your Rating:</label><br>
         <select id="rating">
           <option value="1">1</option>
           <option value="1.5">1.5</option>
@@ -115,10 +126,20 @@
           <option value="4.5">4.5</option>
           <option value="5">5</option>
         </select>
-        <textarea id="review-text"></textarea>
-        <button type="submit" class="button" value="Submit" data-id={{movie.results.id}}>Submit Review</button>
-      </form>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-8 offset-2 review-col">
+        <label>Comments:</label><br>
+        <textarea id="review-text" class="text-input" placeholder="Type your review here"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-2 review-col">
+        <button type="submit" value="Submit" data-id={{movie.results.id}} class="btn">Submit Review</button>
+      </div>
+    </div>
+  </form>
 </div>
-</div>
+<br>
+<br>
