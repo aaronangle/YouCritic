@@ -4,8 +4,34 @@ const key = "api_key=5b7ec8c43b8a517b567bff8676f13124";
 const URL = "https://api.themoviedb.org/3/";
 const express = require("express")
 const router = express.Router();
+const bcrypt = require("bcrypt")
+const passport = require("passport")
+const initializePassport = require("../passport-config.js")
 const obj = {};
 let visited;
+initializePassport(passport,
+  myemail => {
+    db.User.findOne({
+      where: {
+        email: myemail
+      }
+    }).then(data => {
+      return data.dataValues.email
+    })
+  },
+  // user => user.email === email
+  // user => user.id === id
+  myid => {
+    db.User.findAll({
+      where: {
+        id: myid
+      }
+    }).then(data => {
+      console.log(data[0].dataValues.id)
+      return data[0].dataValues.id
+    })
+  }
+)
 
 setInterval(() => {
   visited = false;
@@ -46,9 +72,7 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/movie/search/:name", function (req, res) {
-  console.log("route hit")
   const name = req.params.name;
-  console.log(name);
   axios.get(`${URL}search/movie/?${key}&query=${name}`)
     .then(results => {
       const numResults = results.data.total_results
@@ -199,5 +223,33 @@ router.put("/movie/review/:id", function (req, res) {
     res.json(dbReview.dataValues);
   });
 });
+
+router.get("/register", (req, res) => {
+  res.render("register")
+})
+
+router.get("/login", (req, res) => {
+  res.render("login")
+})
+
+router.post("/register", async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    await db.User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword
+    })
+    await res.redirect("/login")
+  } catch{
+    res.redirect("/register")
+  }
+})
+
+router.post('/login',
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function (req, res) {
+    res.redirect('/');
+  });
 
 module.exports = router;

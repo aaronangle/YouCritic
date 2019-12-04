@@ -38,30 +38,31 @@
   </div>
   {{/if}}
   {{#if movie.recommend}}
-      <div class="row">
-        <div class="col-1 m-auto slide-left">
-          <a class="arrow"><i class="fas fa-angle-left left-arrow"></i></a>
-        </div>
-        <div class="col-10 carousel-row-box align-items-center" id="0">
-          <div class="carousel dragscroll" id="slide-row-0">
-            <div class="carousel-row">
+  <div class="row">
+    <div class="col-1 m-auto slide-left">
+      <a class="arrow"><i class="fas fa-angle-left left-arrow"></i></a>
+    </div>
+    <div class="col-10 carousel-row-box align-items-center" id="0">
+      <div class="carousel dragscroll" id="slide-row-0">
+        <div class="carousel-row">
 
-              {{#each movie.recommend.results}}
-              <div class="carousel-tile" >
-                <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}" class="carousel-image">
-                <div>{{title}}<br>
-                  {{niceDate release_date}}
-                </div>
-              </div>
-              {{/each}}
-
+          {{#each movie.recommend.results}}
+          <div class="carousel-tile">
+            <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}"
+              class="carousel-image">
+            <div>{{title}}<br>
+              {{niceDate release_date}}
             </div>
           </div>
-        </div>
-        <div class="col-1 m-auto slide-right">
-          <a class="arrow"><i class="fas fa-angle-right right-arrow"></i></a>
+          {{/each}}
+
         </div>
       </div>
+    </div>
+    <div class="col-1 m-auto slide-right">
+      <a class="arrow"><i class="fas fa-angle-right right-arrow"></i></a>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <hr>
@@ -115,7 +116,7 @@
           <option value="5">5</option>
         </select>
         <textarea id="review-text"></textarea>
-        <button type="submit" value="Submit" data-id={{movie.results.id}}>Submit Review</button>
+        <button type="submit" class="button" value="Submit" data-id={{movie.results.id}}>Submit Review</button>
       </form>
     </div>
   </div>
