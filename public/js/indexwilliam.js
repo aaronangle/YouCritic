@@ -1,6 +1,6 @@
 $navbarSearch = $("#navbar-search");
 $movies = $(".carousel-image");
-$submit = $("button")
+$submit = $(".button")
 
 
 
