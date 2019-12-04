@@ -1,35 +1,37 @@
 # YouCritic
+
 Are you a movie critic?
 Does not matter, come share your opinion on the movies you watch!
 
 ## Motivation
-We created YouCritic as a way for people to see movie trailers and be able to rate movies and see what others have rated the movie! 
 
-## Code style
-The code style used for this application is standard code. 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+We created YouCritic as a way for people to see movie trailers and be able to rate movies and see what others have rated the movie! 
  
 ## Screenshots
+
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-Ex. -
 
 <b>Built with</b>
-- [Electron](https://electron.atom.io)
+- [HTML/CSS](https://electron.atom.io)
+- [BOOTSTRAP](https://getbootstrap.com/)
+- [NODE](https://nodejs.org/en/)
+- [EXPRESS](https://expressjs.com/)
+- [SEQUALIZE](https://www.npmjs.com/package/sequelize)
+- [PASSPORT](http://www.passportjs.org/)
+- [MySQL](https://www.mysql.com/)
 
 ## Features
-What makes your project stand out?
 
-## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+YouCritic has some amazing features such as on the home page, you will be able to see the latest movies from release date, trending movies on most searched and all movies sorted by genre! The main feature will give users the ability to not only see movie information and a trailer but also leave a rating and review! 
 
 ## Installation
 Provide step by step series of examples and explanations about how to get a development env running.
 
 ## API Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+YouCritic 
 
 ## Tests
 Describe and show how to run the tests with code examples.

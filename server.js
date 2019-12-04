@@ -37,6 +37,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+require('./routes/protectedRoutes.js')(app, passport)
 const routes = require("./routes/apiRoutes.js");
 app.use(routes);
 
@@ -47,6 +48,8 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+require("./passport-config.js")(passport, db.User)
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function () {
