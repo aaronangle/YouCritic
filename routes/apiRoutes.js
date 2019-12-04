@@ -4,7 +4,7 @@ const key = "api_key=5b7ec8c43b8a517b567bff8676f13124";
 const URL = "https://api.themoviedb.org/3/";
 const express = require("express")
 const router = express.Router();
-const bcrypt = require("bcrypt")
+// const bcrypt = require("bcrypt")
 const passport = require("passport")
 const initializePassport = require("../passport-config.js")
 const obj = {};
