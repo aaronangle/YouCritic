@@ -1,6 +1,10 @@
-$navbarSearch = $("#navbar-search");
-$movies = $(".carousel-image");
-$submit = $(".btn")
+var $navbarSearch = $("#navbar-search");
+var $movies = $(".carousel-image");
+var $submit = $(".btn");
+var register = $("#register")
+var registerUser = $("#register-user")
+
+
 
 
 
@@ -41,9 +45,22 @@ var submitReview = function () {
     }
     $.post("/movie/review", data)
         .then(function (data) {
-            location.reload();
+            if (data === false) {
+                console.log("helo")
+                $("#loginModal").modal("show")
+            } else {
+                location.reload();
+            }
         })
 }
+
+register.on("click", function () {
+    $("#registerModal").modal("show")
+})
+
+registerUser.on("click", function () {
+    $("#loginModal").modal("show")
+})
 
 $navbarSearch.on("submit", handleFormSubmit);
 $movies.on("click", movieClick);
