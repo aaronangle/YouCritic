@@ -47,7 +47,20 @@ hr {
 
 .review-row {
   width: 100%;
+  background-color: #202020;
+  padding: 10px;
 }
+
+.review-row-no-pad{
+  width: 100%;
+  background-color: #202020;
+}
+.review-col{
+  text-align: center;
+  align-content: center;
+  padding: 10px;
+}
+
 input.search-query {
   background-color:black;
   color:white;
@@ -86,12 +99,6 @@ input.search-query {
   .header-image-small {
     display: inline;
   }
-}
-
-.review-col{
-  text-align: center;
-  align-content: center;
-  padding: 10px;
 }
 
 .btn {
