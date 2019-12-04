@@ -1,22 +1,37 @@
 const LocalStrategy = require("passport-local").Strategy
-// const bcrypt = require("bcrypt")
-var db = require("./models");
+const bcrypt = require("bcryptjs")
 
-function initialize(passport, getUserById) {
-    passport.use(new LocalStrategy(
-        function (username, password, done) {
-            User.findOne({ email: email }, function (err, user) {
-                if (err) { return done(err); }
-                if (!user) { return done(null, false); }
-                if (!user.verifyPassword(password)) { return done(null, false); }
-                return done(null, user);
-            });
-        }
-    ));
-    // passport.use(new LocalStrategy({ usernameField: 'email' }))
-    passport.serializeUser((user, done) => done(null, id))
-    // passport.deserializeUser((id, done) => done(null, getUserById(id)))
+module.exports = (passport, user) => {
+
+    passport.serializeUser((user, done) => {
+        done(null, user.id);
+    });
+
+    passport.deserializeUser((id, done) => {
+        user.findByPk(id).then(user => {
+            if (user) {
+                done(null, user.get());
+            } else {
+                done(user.errors, null);
+            }
+        });
+    });
+
+    passport.use("local", new LocalStrategy({
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true
+    },
+        function (req, email, password, done) {
+            user.findOne({ where: { email: email } }).then(username => {
+                if (!username) {
+                    return (null, false, { message: "That email isn't registered" })
+                }
+                if (!bcrypt.compareSync(password, username.password)) {
+                    return (null, false, { message: "Incorrect Password" })
+                }
+
+                return done(null, username.get())
+            })
+        }))
 }
-
-module.exports = initialize;
-
