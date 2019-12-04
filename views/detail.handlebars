@@ -1,12 +1,12 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-3 detail-cols">
+    <div class="col-xs-12 col-md-4 detail-cols">
       <img src="https://image.tmdb.org/t/p/w500/{{movie.results.poster_path}}" height="400px">
     </div>
-    <div class="col detail-cols">
+    <div class="col-xs-12 col-md-8 detail-cols">
       <p class="details-text"><b>Title:</b> {{movie.results.title}}</p>
-      <p class="details-text"><b>Run Time:</b> {{movie.results.runtime}} mins</p>
+      {{#if movie.results.runtime}}<p class="details-text"><b>Run Time:</b> {{movie.results.runtime}} mins</p>{{/if}}
       <p class="details-text"><b>Release Date:</b> {{niceDate movie.results.release_date}}</p>
       <p class="details-text"><b>Production Companies:</b> {{#each movie.results.production_companies}}{{name}}
         {{/each}}</p>
@@ -38,30 +38,28 @@
   </div>
   {{/if}}
   {{#if movie.recommend}}
-      <div class="row">
-        <div class="col-1 m-auto slide-left">
-          <a class="arrow"><i class="fas fa-angle-left left-arrow"></i></a>
-        </div>
-        <div class="col-10 carousel-row-box align-items-center" id="0">
-          <div class="carousel dragscroll" id="slide-row-0">
-            <div class="carousel-row">
-
-              {{#each movie.recommend.results}}
-              <div class="carousel-tile" data-id="{{id}}" id="movie-{{id}}">
-                <img data-id="{{id}}" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="movie image" class="carousel-image"> 
-                <div>{{title}}<br>
-                  {{niceDate release_date}}
-                </div>
-              </div>
-              {{/each}}
-
+  <div class="row">
+    <div class="col-1 m-auto slide-left">
+      <a class="arrow"><i class="fas fa-angle-left left-arrow"></i></a>
+    </div>
+    <div class="col-10 carousel-row-box align-items-center" id="0">
+      <div class="carousel dragscroll" id="slide-row-0">
+        <div class="carousel-row">
+          {{#each movie.recommend.results}}
+          <div class="carousel-tile" >
+            <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}" class="carousel-image">
+            <div>{{title}}<br>
+              {{niceDate release_date}}
             </div>
           </div>
-        </div>
-        <div class="col-1 m-auto slide-right">
-          <a class="arrow"><i class="fas fa-angle-right right-arrow"></i></a>
+          {{/each}}
         </div>
       </div>
+    </div>
+    <div class="col-1 m-auto slide-right">
+      <a class="arrow"><i class="fas fa-angle-right right-arrow"></i></a>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <hr>
@@ -76,18 +74,14 @@
       <div class="row review-row">
         <div class="col-8 offset-1">
           <h2>{{name}}</h2>
-          {{desc}}
         </div>
         <div class="col-2">
           Rating: {{rating}}
         </div>
       </div>
-
       <div class="row review-row">
         <div class="col-10 offset-1">
-
-
-
+          {{desc}}
         </div>
       </div>
       <div class="row review-row">
@@ -99,25 +93,45 @@
     </div>
   </div>
   {{/if}}
+  <br>
+  <form name="review-form">
   <div class="row">
-    <div class="col">
-      <form name="review-form">
-        <input type="text" id="reviewer-name">
-        <select id="rating">
-          <option value="1">1</option>
-          <option value="1.5">1.5</option>
-          <option value="2">2</option>
-          <option value="2.5">2.5</option>
-          <option value="3">3</option>
-          <option value="3.5">3.5</option>
-          <option value="4">4</option>
-          <option value="4.5">4.5</option>
-          <option value="5">5</option>
-        </select>
-        <textarea id="review-text"></textarea>
-        <button type="submit" value="Submit">Submit Review</button>
-      </form>
+    <div class="col-6 offset-2 review-col">
+      <h2>Write a review!</h2>
     </div>
   </div>
+  <div class="row"> 
+    <div class="col-6 offset-2 review-col">
+      <label>Reviewer's Name:</label><br>
+        <input type="text" id="reviewer-name" class="text-input" placeholder="Reviewer's name">
+    </div>
+    <div class="col-2 review-col">
+      <label>Your Rating:</label><br>
+      <select id="rating">
+        <option value="1">1</option>
+        <option value="1.5">1.5</option>
+        <option value="2">2</option>
+        <option value="2.5">2.5</option>
+        <option value="3">3</option>
+        <option value="3.5">3.5</option>
+        <option value="4">4</option>
+        <option value="4.5">4.5</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2 review-col">
+      <label>Comments:</label><br>
+      <textarea id="review-text" class="text-input" placeholder="Type your review here"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2 review-col">
+      <button type="submit" value="Submit" class="btn">Submit Review</button>
+    </div>
+  </div>
+  </form>
 </div>
-</div>
+<br>
+<br>
