@@ -1,6 +1,6 @@
 $navbarSearch = $("#navbar-search");
 $movies = $(".carousel-image");
-$submit = $(".button")
+$submit = $(".btn")
 
 
 
@@ -27,6 +27,7 @@ var movieClick = function () {
 };
 
 var submitReview = function () {
+    console.log("click")
     event.preventDefault();
     if ($("#reviewer-name").val() === "" || $("#rating").val() === "" || $("#review-text").val() === "") {
         alert("Please fill in all the information fields")

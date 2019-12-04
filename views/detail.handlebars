@@ -45,15 +45,15 @@
     <div class="col-10 carousel-row-box align-items-center" id="0">
       <div class="carousel dragscroll" id="slide-row-0">
         <div class="carousel-row">
-            {{#each movie.recommend.results}}
-            <div class="carousel-tile">
-              <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}"
-                class="carousel-image">
-              <div>{{title}}<br>
-                {{niceDate release_date}}
-              </div>
+          {{#each movie.recommend.results}}
+          <div class="carousel-tile">
+            <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="header image" data-id="{{id}}"
+              class="carousel-image">
+            <div>{{title}}<br>
+              {{niceDate release_date}}
             </div>
-            {{/each}}
+          </div>
+          {{/each}}
         </div>
       </div>
     </div>
