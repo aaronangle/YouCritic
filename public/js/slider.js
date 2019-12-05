@@ -17,15 +17,15 @@ $(document).ready(function () {
       const $sliderContainer = document.getElementById(rowIndex).getBoundingClientRect();
       const $slider = document.getElementById("slide-row-" + rowIndex).getBoundingClientRect();
       const sliderWidth = document.getElementById("slide-row-" + rowIndex).scrollWidth;
-      if (($slider.left + sliderWidth) - 600 <= ($sliderContainer.left + $sliderContainer.width)) {
+      if (($slider.left + sliderWidth) - 300 <= ($sliderContainer.left + $sliderContainer.width)) {
         $("#slide-row-" + rowIndex).animate({ left: $sliderContainer.width - sliderWidth }, 400, function () {
           FixMargin($sliderContainer.width - sliderWidth);
         });
         return;
       }
 
-      $("#slide-row-" + rowIndex).animate({ left: left - 600 }, 400, function () {
-        FixMargin(left - 600);
+      $("#slide-row-" + rowIndex).animate({ left: left - 300 }, 400, function () {
+        FixMargin(left - 300);
       });
     }
   });
@@ -37,15 +37,15 @@ $(document).ready(function () {
       if (animatingFlag) { return; }
       animatingFlag = true;
       let left = parseInt($("#slide-row-" + rowIndex).css('left'), 10);
-      if (left + 600 >= 0) {
+      if (left + 300 >= 0) {
         $("#slide-row-" + rowIndex).animate({ left: 0 }, 400, function () {
           FixMargin(0);
         });
         return;
       };
 
-      $("#slide-row-" + rowIndex).animate({ left: left + 600 }, 400, function () {
-        FixMargin(left + 600);
+      $("#slide-row-" + rowIndex).animate({ left: left + 300 }, 400, function () {
+        FixMargin(left + 300);
       });
     }
   });
