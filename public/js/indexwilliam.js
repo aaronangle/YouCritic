@@ -54,11 +54,13 @@ var submitReview = function () {
 registerTrigger.on("click", function (event) {
     event.preventDefault()
     $("#registerModal").modal("show")
+    $("#loginModal").modal("hide")
 })
 
 loginTrigger.on("click", function (event) {
     event.preventDefault()
     $("#loginModal").modal("show")
+    $("#registerModal").modal("hide")
 })
 
 $navbarSearch.on("submit", handleFormSubmit);
