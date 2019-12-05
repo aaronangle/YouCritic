@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(session({
-  secret: process.env.SECRETKEY,
+  secret: "secretkey",
   resave: true,
   saveUninitialized: true
 }))
