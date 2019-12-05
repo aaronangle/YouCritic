@@ -64,7 +64,7 @@ router.get("/movie/search/:name", function (req, res) {
         if (req.user !== undefined) {
           movie.user = req.user.name
         } else {
-          movie.user = "Not Logged In"
+          movie.user = false;
         }
         axios.get(`${URL}movie/${id}?${key}`)
           .then(results => {
@@ -188,20 +188,5 @@ router.get("/register", (req, res) => {
 router.get("/login", (req, res) => {
   res.render("login")
 })
-
-router.post("/register", async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    await db.User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword
-    })
-  } catch{
-    res.redirect("/register")
-  }
-})
-
-
 
 module.exports = router;

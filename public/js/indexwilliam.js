@@ -1,13 +1,9 @@
 var $navbarSearch = $("#navbar-search");
 var $movies = $(".carousel-image");
 var $submit = $("#submitReview");
-var register = $("#register")
+var registerTrigger = $(".registerTrigger")
+var loginTrigger = $(".loginTrigger")
 var registerUser = $("#register-user")
-var registerDetail = $("#registerUser")
-
-
-
-
 
 var testing = function (event) {
     event.preventDefault();
@@ -55,16 +51,12 @@ var submitReview = function () {
         })
 }
 
-register.on("click", function () {
-    $("#registerModal").modal("show")
-})
-
-registerDetail.on("click", function (event) {
+registerTrigger.on("click", function (event) {
     event.preventDefault()
     $("#registerModal").modal("show")
 })
 
-registerUser.on("click", function (event) {
+loginTrigger.on("click", function (event) {
     event.preventDefault()
     $("#loginModal").modal("show")
 })

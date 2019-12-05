@@ -16,6 +16,7 @@
 
 <body>
   <div class="header-div">
+    <button class="btn loginButton loginTrigger">Login/Register</button>
     <div class="my-auto">
       <a href="/"><img src="/images/header-800.jpg" alt="header image" class="header-image">
         <img src="/images/header-320.jpg" alt="header image" class="header-image-small"></a>
@@ -41,29 +42,29 @@
             </button>
           </div>
           <div class="modal-body">
-<form action="/login" method="POST">
-  <div class="row">
-    <div class="col-3 review-col">
-      <label for="email">Email</label>
-    </div>
-    <div class="col-9 review-col">
-      <input type="email" class="text-input" id="email" name="email" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3 review-col">
-      <label for="password">Password</label>
-    </div>
-    <div class="col-9 review-col">
-      <input type="password" class="text-input" id="password" name="password" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 review-col">
-      <button type="submit" class="btn">Login</button>
-    </div>
-  </div>
-</form>
+            <form id="loginForm" action="http://localhost:3000/login" method="POST">
+              <div class="row">
+                <div class="col-3 review-col">
+                  <label for="email">Email</label>
+                </div>
+                <div class="col-9 review-col">
+                  <input type="email" class="text-input" id="email" name="email" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 review-col">
+                  <label for="password">Password</label>
+                </div>
+                <div class="col-9 review-col">
+                  <input type="password" class="text-input" id="password" name="password" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 review-col">
+                  <button type="submit" class="btn">Login</button>
+                </div>
+              </div>
+            </form>
             {{!-- <form action="/login" method="POST">
               <div>
                 <label for="email">Email</label>
@@ -78,7 +79,7 @@
           </div>
           <div class="modal-footer">
             <p>Don't have an account yet?</p>
-            <button type="button" id="register" class="btn">Register</button>
+            <button type="button" id="register" class="btn registerTrigger">Register</button>
           </div>
         </div>
       </div>
