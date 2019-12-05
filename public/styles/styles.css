@@ -96,16 +96,8 @@ input.search-query {
   .header-image-small {
     display: inline;
   }
-  .searchContainer {
-    position: relative;
-    margin: auto;
-    top: 0px;
-    left: 0px;
-    right: 0;
-    bottom: 0;
-    /* width: 300px;  */
-  }
 }
+
 
 .btn {
     background-color: #633200;
@@ -165,8 +157,8 @@ input.search-query {
 .searchContainer {
   position: relative;
   margin: auto;
-  top: -200px;
-  left: 470px;
+  top: 60px;
+  left: 350px;
   right: 0;
   bottom: 0;
   width: 300px; 
@@ -181,7 +173,7 @@ input.search-query {
   left: 0;
   width: 80px;
   height: 80px;
-  background: black;
+  background: #660000;
   border-radius: 50%;
   transition: all 1s;
   z-index: 4;
@@ -252,7 +244,7 @@ input.search-query {
 }
 .searchContainer input:focus ~ .search {
   right: -250px;
-  background: #151515;
+  background: #660000;
   z-index: 6;
 }
 .searchContainer input:focus ~ .search::before {
@@ -283,4 +275,37 @@ input.search-query {
 .close-btn {
   color: #fff;
   text-shadow: 0 1px 0 #fff;
+}
+@media only screen and (max-width: 850px) {
+  .searchContainer {
+  position: relative;
+  margin: auto;
+  top: 50px;
+  left: 175px;
+  right: 0;
+  bottom: 0;
+  width: 300px; 
+}
+}
+@media only screen and (max-width: 685px) {
+  .searchContainer {
+  position: relative;
+  margin: auto;
+  top: 0px;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  width: 300px; 
+}
+}
+@media only screen and (max-width: 500px) {
+  .searchContainer {
+  position: relative;
+  margin: auto;
+  top: 20px;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  width: 300px; 
+}
 }
