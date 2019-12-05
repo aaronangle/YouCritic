@@ -1,6 +1,7 @@
+require("dotenv").config();
 var db = require("../models");
 const axios = require("axios");
-const key = "api_key=5b7ec8c43b8a517b567bff8676f13124";
+const key = process.env.APIKEY;
 const URL = "https://api.themoviedb.org/3/";
 const express = require("express")
 const router = express.Router();
@@ -179,14 +180,6 @@ router.get("/movie/getby/:id", async function (req, res) {
   catch{
     res.status(500);
   }
-})
-
-router.get("/register", (req, res) => {
-  res.render("register")
-})
-
-router.get("/login", (req, res) => {
-  res.render("login")
 })
 
 module.exports = router;
