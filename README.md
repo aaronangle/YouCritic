@@ -12,11 +12,15 @@ We created YouCritic as a way for people to see movie trailers and be able to ra
 
 ![HomePage](public/images/homepageGif.gif)
 
-![Search Option](public/images/searchGif.gif)
+![Search Option](public/images/searchpage.gif)
 
 ![Detail Page](public/images/detailsGif.gif)
 
-![Review](public/images/reviewGif.gif)
+![Review](public/images/review.png)
+
+![Login](public/images/login.png)
+
+![Register](public/images/register.png)
 
 ## Tech/framework used
 
@@ -28,6 +32,7 @@ We created YouCritic as a way for people to see movie trailers and be able to ra
 - [SEQUALIZE](https://www.npmjs.com/package/sequelize)
 - [PASSPORT](http://www.passportjs.org/)
 - [MySQL](https://www.mysql.com/)
+- [HEROKU](https://www.heroku.com/)
 
 ## Features
 
