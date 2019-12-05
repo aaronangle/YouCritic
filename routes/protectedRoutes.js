@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app, passport) {
 
-  app.post("login",
+  app.post("/login",
     passport.authenticate("local", { failureRedirect: "/404" }),
     function (req, res) {
       res.redirect("back");
