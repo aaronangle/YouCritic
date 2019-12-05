@@ -89,15 +89,6 @@ input.search-query {
   display: none;
 }
 
-@media only screen and (max-width: 500px){
-  .header-image {
-      display: none;
-  }
-  .header-image-small {
-    display: inline;
-  }
-}
-
 
 .btn {
     background-color: #633200;
@@ -285,6 +276,12 @@ input.search-query {
   right: 0;
   bottom: 0;
   width: 300px; 
+}
+.header-image {
+  display: none;
+}
+.header-image-small {
+display: inline;
 }
 }
 @media only screen and (max-width: 685px) {
