@@ -267,6 +267,12 @@ input.search-query {
   color: #fff;
   text-shadow: 0 1px 0 #fff;
 }
+.loginButton{
+  background-color: black !important;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 @media only screen and (max-width: 850px) {
   .searchContainer {
   position: relative;
@@ -304,5 +310,4 @@ display: inline;
   right: 0;
   bottom: 0;
   width: 300px; 
-}
 }

@@ -1,6 +1,7 @@
+require("dotenv").config();
 var db = require("../models");
 const axios = require("axios");
-const key = "api_key=5b7ec8c43b8a517b567bff8676f13124";
+const key = process.env.APIKEY;
 const URL = "https://api.themoviedb.org/3/";
 const express = require("express")
 const router = express.Router();
@@ -64,7 +65,7 @@ router.get("/movie/search/:name", function (req, res) {
         if (req.user !== undefined) {
           movie.user = req.user.name
         } else {
-          movie.user = "Not Logged In"
+          movie.user = false;
         }
         axios.get(`${URL}movie/${id}?${key}`)
           .then(results => {
@@ -180,28 +181,5 @@ router.get("/movie/getby/:id", async function (req, res) {
     res.status(500);
   }
 })
-
-router.get("/register", (req, res) => {
-  res.render("register")
-})
-
-router.get("/login", (req, res) => {
-  res.render("login")
-})
-
-router.post("/register", async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    await db.User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword
-    })
-  } catch{
-    res.redirect("/register")
-  }
-})
-
-
 
 module.exports = router;

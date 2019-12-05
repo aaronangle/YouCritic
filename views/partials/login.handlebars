@@ -1,0 +1,42 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-style">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
+            <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="loginForm" action="http://localhost:3000/login" method="POST">
+              <div class="row">
+                <div class="col-3 review-col">
+                  <label for="email">Email</label>
+                </div>
+                <div class="col-9 review-col">
+                  <input type="email" class="text-input" id="email" name="email" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 review-col">
+                  <label for="password">Password</label>
+                </div>
+                <div class="col-9 review-col">
+                  <input type="password" class="text-input" id="password" name="password" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 review-col">
+                  <button type="submit" class="btn">Login</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <p>Don't have an account yet?</p>
+            <button type="button" id="register" class="btn registerTrigger">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>

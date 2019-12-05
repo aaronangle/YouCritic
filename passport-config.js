@@ -34,4 +34,34 @@ module.exports = (passport, user) => {
                 return done(null, username.get())
             })
         }))
+
+    passport.use("local-signIn", new LocalStrategy({
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true
+    },
+        function (req, email, password, done) {
+            user.findOne({ where: { email: email } }).then(username => {
+                if (username) {
+                    return done(null, false, { message: "That email is already in use" })
+                } else {
+                    const userPassword = bcrypt.hashSync(password, 10)
+                    const data = {
+                        name: req.body.name,
+                        email: email,
+                        password: userPassword
+                    }
+
+                    user.create(data).then((newUser, created) => {
+                        if (!newUser) {
+                            return done(null, false)
+                        }
+                        if (newUser) {
+                            return done(null, newUser)
+                        }
+                    })
+                }
+            })
+        }
+    ))
 }

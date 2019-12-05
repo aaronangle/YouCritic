@@ -12,13 +12,11 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@okta/oidc-middleware": "^2.1.0",
     "axios": "^0.19.0",
     "axois": "0.0.1-security",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
-    "express-flash": "0.0.2",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
     "mysql2": "^1.6.5",
