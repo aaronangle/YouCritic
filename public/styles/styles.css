@@ -305,13 +305,17 @@ iframe{
 }
 .left-arrow{
   font-size: 60px;
-  margin-left: -25px;
+  margin-left: -20px;
 }
 .right-arrow{
   font-size: 60px;
+  margin-left: 20px;
 }
 .loginButton{
   display: none;
+}
+.slideResponsive{
+  width: 100%;
 }
 }
 @media only screen and (max-width: 500px) {
