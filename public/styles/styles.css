@@ -300,6 +300,19 @@ display: inline;
   bottom: 0;
   width: 300px; 
 }
+iframe{
+  width: 100%;
+}
+.left-arrow{
+  font-size: 60px;
+  margin-left: -25px;
+}
+.right-arrow{
+  font-size: 60px;
+}
+.loginButton{
+  display: none;
+}
 }
 @media only screen and (max-width: 500px) {
   .searchContainer {
@@ -311,6 +324,5 @@ display: inline;
   bottom: 0;
   width: 300px; 
 
-}
 }
 }
