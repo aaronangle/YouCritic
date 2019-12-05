@@ -284,3 +284,9 @@ input.search-query {
   color: #fff;
   text-shadow: 0 1px 0 #fff;
 }
+.loginButton{
+  background-color: black !important;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

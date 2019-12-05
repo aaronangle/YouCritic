@@ -96,10 +96,10 @@
   </div>
   {{/if}}
   <br>
+  {{#if movie.user}}
   <form name="review-form" method="Post">
     <div class="row">
       <div class="col-8 offset-2 review-col">
-        {{#if movie.user}}
         <h2>Write a Review!</h2>
       </div>
     </div>
@@ -138,8 +138,8 @@
   {{else}}
   <h2>Login or Register to Leave a Review</h2>
   <div class="col-8 offset-2 review-col">
-    <button class="btn" id="register-user">Login</button>
-    <button class="btn" id="registerUser">Register</button>
+    <button class="btn loginTrigger">Login</button>
+    <button class="btn registerTrigger">Register</button>
   </div>
   {{/if}}
 </div>

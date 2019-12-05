@@ -2,11 +2,18 @@ var db = require("../models");
 
 module.exports = function (app, passport) {
 
-  app.post('/login',
-    passport.authenticate('local', { failureRedirect: '/login' }),
+  app.post("/login",
+    passport.authenticate("local", { failureRedirect: "/404" }),
     function (req, res) {
-      res.redirect('/');
+      res.redirect("back");
     });
+
+  app.post("/register",
+    passport.authenticate("local-signIn", { failureRedirect: "/404" }),
+    function (req, res) {
+      res.redirect("back")
+    }
+  )
 
   app.post("/movie/review", isLoggedIn, (req, res) => {
     const { Rating, Review, name, id } = req.body;
@@ -16,7 +23,6 @@ module.exports = function (app, passport) {
       Rating: Rating,
       Review: Review
     }).then(function (dbReview) {
-      console.log(dbReview.dataValues)
       res.json(dbReview.dataValues);
     });
   });
