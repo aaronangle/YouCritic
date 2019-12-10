@@ -38,7 +38,8 @@
   </div>
   {{/if}}
   {{#if movie.recommend}}
-  <div class="row">
+  <h2>Related Movies:</h2>
+  <div class="row flex-nowrap slideResponsive">
     <div class="col-1 m-auto slide-left">
       <a class="arrow"><i class="fas fa-angle-left left-arrow"></i></a>
     </div>
@@ -95,7 +96,7 @@
     </div>
   </div>
   {{/if}}
-  <br>
+  <br id="review">
   {{#if movie.user}}
   <form name="review-form" method="Post">
     <div class="row">
